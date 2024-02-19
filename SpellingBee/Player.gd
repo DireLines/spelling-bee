@@ -23,8 +23,13 @@ func _physics_process(delta):
 		linear_velocity = max_speed*linear_velocity.normalized()
 	var mouse_pos = get_global_mouse_position()
 	sprite_2d.flip_h = mouse_pos.x < position.x
-	if Input.is_action_just_pressed("w"):
-		load_bullet("W")
+
+func _unhandled_input(event):
+	if event is InputEventKey:
+		if event.pressed:
+			var c = char(event.keycode)
+			if c >= 'A' and c <= 'Z':
+				load_bullet(c)
 
 var bullet_prefab = preload("res://bullet.tscn")
 func load_bullet(letter:String):
@@ -34,3 +39,4 @@ func load_bullet(letter:String):
 	var mouse_pos = get_global_mouse_position()	
 	bullet.linear_velocity = (mouse_pos - position).normalized() * 500
 	bullet.get_node("Letter").text = letter
+	get_node("Label").text = letter
