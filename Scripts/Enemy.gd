@@ -15,8 +15,19 @@ func set_killphrase(phrase):
 	hit_letters = []
 	for letter in killphrase:
 		hit_letters.append(false)
-	get_node("Word").text = killphrase
-
+	set_text(killphrase, [Color.RED, Color.GREEN, Color.BLUE])
+	
+func set_text(word: String, colors: Array[Color]):
+	assert(word.length() == colors.size(), "word length and colors length must match.")
+	var text = ""
+	for i in range(word.length()):
+		var color = colors[i].to_html()
+		var char = word[i]
+		text += "[color=%s]%s" % [color, char]
+		
+	get_node("Word").text = text
+		
+	
 func _on_body_entered(body):
 	var label = body.get_node_or_null("Letter")
 	if label != null:
