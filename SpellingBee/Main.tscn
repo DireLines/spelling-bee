@@ -6,7 +6,6 @@
 
 [node name="Bee" parent="." instance=ExtResource("1_4vwxn")]
 position = Vector2(600, 300)
-scale = Vector2(5, 5)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 323)
