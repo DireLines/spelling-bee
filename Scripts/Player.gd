@@ -34,7 +34,7 @@ func _unhandled_input(event):
 			if c >= 'A' and c <= 'Z':
 				load_bullet(c)
 
-var bullet_prefab = preload("res://bullet.tscn")
+var bullet_prefab = preload("res://Prefabs/bullet.tscn")
 func load_bullet(letter:String):
 	var bullet = bullet_prefab.instantiate()
 	get_tree().get_root().add_child(bullet)
