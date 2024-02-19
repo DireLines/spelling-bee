@@ -32,5 +32,5 @@ func load_bullet(letter:String):
 	get_tree().get_root().add_child(bullet)
 	bullet.position = position
 	var mouse_pos = get_global_mouse_position()	
-	bullet.linear_velocity = (mouse_pos - position) * 2
+	bullet.linear_velocity = (mouse_pos - position).normalized() * 500
 	bullet.get_node("Letter").text = letter
