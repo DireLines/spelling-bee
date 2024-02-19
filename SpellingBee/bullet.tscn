@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq68r1yso26am"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5sbns"]
+
+[node name="Bullet" type="RigidBody2D"]
+gravity_scale = 1.66533e-16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5sbns")
+
+[node name="Letter" type="Label" parent="."]
+offset_left = -5.0
+offset_top = -12.0
+offset_right = 35.0
+offset_bottom = 11.0
+text = "B"

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlvq2jsfqirwy"]
+
+[ext_resource type="PackedScene" uid="uid://f46ldc4pbgag" path="res://bee.tscn" id="1_4vwxn"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Bee" parent="." instance=ExtResource("1_4vwxn")]
+position = Vector2(600, 300)
+scale = Vector2(5, 5)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 323)
