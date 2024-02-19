@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://ca4851fecb8fq"]
+
+[ext_resource type="Texture2D" uid="uid://cy0msdwlbxuby" path="res://EnemyTalk.png" id="1_7jrdi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w3kir"]
+radius = 23.0217
+
+[node name="Enemy" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
+gravity_scale = 1.66533e-16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_w3kir")
+
+[node name="Face" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_7jrdi")
+hframes = 3
+
+[node name="Word" type="Label" parent="."]
+offset_left = -19.0
+offset_top = -52.0
+offset_right = 21.0
+offset_bottom = -29.0
+text = "BEE"
+horizontal_alignment = 1
