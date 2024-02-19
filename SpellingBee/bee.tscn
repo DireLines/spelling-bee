@@ -65,7 +65,9 @@ vframes = 2
 position = Vector2(-2, -1)
 shape = SubResource("CapsuleShape2D_7htaw")
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Letter" type="Label" parent="."]
+offset_left = -4.0
+offset_top = -13.0
+offset_right = 36.0
+offset_bottom = 10.0
 text = "B"

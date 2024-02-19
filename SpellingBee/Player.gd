@@ -1,7 +1,8 @@
 extends RigidBody2D
 
 @export var speed: int = 50
-@export var max_speed: int = 400
+@export var max_forward_speed: int = 400
+@export var max_reverse_speed: int = 100
 @export var dampening: float = 5.0
 
 @onready var sprite_2d = $Sprite2D
@@ -19,6 +20,9 @@ func _physics_process(delta):
 	rotation = 0
 	var velocity = get_input()
 	apply_central_impulse(velocity*delta)
+	var max_speed = max_forward_speed
+	if Input.is_action_pressed("right_click"):
+		max_speed = max_reverse_speed
 	if linear_velocity.length() >= max_speed:
 		linear_velocity = max_speed*linear_velocity.normalized()
 	var mouse_pos = get_global_mouse_position()
@@ -39,4 +43,4 @@ func load_bullet(letter:String):
 	var mouse_pos = get_global_mouse_position()	
 	bullet.linear_velocity = (mouse_pos - position).normalized() * 500
 	bullet.get_node("Letter").text = letter
-	get_node("Label").text = letter
+	get_node("Letter").text = letter
