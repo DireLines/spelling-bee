@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy0msdwlbxuby"
-path="res://.godot/imported/EnemyTalk.png-7a5d419a87c3022f13a7e76e82804d69.ctex"
+uid="uid://cr7ua2qeytn43"
+path="res://.godot/imported/bflap.png-d8a34c847d67bea3b5a9f4d0bbefe2b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://EnemyTalk.png"
-dest_files=["res://.godot/imported/EnemyTalk.png-7a5d419a87c3022f13a7e76e82804d69.ctex"]
+source_file="res://Sprites/bflap.png"
+dest_files=["res://.godot/imported/bflap.png-d8a34c847d67bea3b5a9f4d0bbefe2b2.ctex"]
 
 [params]
 

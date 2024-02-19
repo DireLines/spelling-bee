@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://f46ldc4pbgag"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_4yc5n"]
-[ext_resource type="Script" path="res://PleaseFlap.gd" id="1_vyrgm"]
-[ext_resource type="Texture2D" uid="uid://cr7ua2qeytn43" path="res://bflap.png" id="1_x5mmi"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_4yc5n"]
+[ext_resource type="Script" path="res://Scripts/PleaseFlap.gd" id="1_vyrgm"]
+[ext_resource type="Texture2D" uid="uid://cr7ua2qeytn43" path="res://Sprites/bflap.png" id="1_x5mmi"]
 
 [sub_resource type="Animation" id="Animation_q6eih"]
 length = 0.001

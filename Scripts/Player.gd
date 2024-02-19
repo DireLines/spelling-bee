@@ -17,7 +17,6 @@ func get_input():
 		velocity = (position - mouse_pos) * speed
 	return velocity
 func _physics_process(delta):
-	rotation = 0
 	var velocity = get_input()
 	apply_central_impulse(velocity*delta)
 	var max_speed = max_forward_speed
