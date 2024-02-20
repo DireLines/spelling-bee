@@ -17,8 +17,9 @@ config/icon="res://Sprites/icon.svg"
 
 [display]
 
-window/size/viewport_width=1200
-window/size/viewport_height=800
+window/size/viewport_width=1600
+window/size/viewport_height=1000
+window/size/mode=2
 window/stretch/mode="viewport"
 window/stretch/scale=2.0
 
