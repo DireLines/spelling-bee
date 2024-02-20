@@ -9,7 +9,7 @@ var killphrase = ""
 var hit_letters = []
 var sound: AudioStreamWAV
 
-@export var speed = 40
+var speed = 40
 @export var player: Node2D = null
 
 func _ready():

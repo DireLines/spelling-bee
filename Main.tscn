@@ -19,23 +19,30 @@ stream = ExtResource("2_vrvwy")
 volume_db = -4.768
 autoplay = true
 
-[node name="Enemy" parent="." instance=ExtResource("3_jg6e1")]
+[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_jg6e1")]
 position = Vector2(328, 465)
+player = NodePath("../Bee")
 
-[node name="Enemy2" parent="." instance=ExtResource("3_jg6e1")]
+[node name="Enemy2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_jg6e1")]
 position = Vector2(144, 134)
+player = NodePath("../Bee")
 
-[node name="Enemy3" parent="." instance=ExtResource("3_jg6e1")]
+[node name="Enemy3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_jg6e1")]
 position = Vector2(885, 431)
+player = NodePath("../Bee")
 
-[node name="Enemy4" parent="." instance=ExtResource("3_jg6e1")]
+[node name="Enemy4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_jg6e1")]
 position = Vector2(1020, 104)
+player = NodePath("../Bee")
 
-[node name="Enemy5" parent="." instance=ExtResource("3_jg6e1")]
+[node name="Enemy5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_jg6e1")]
 position = Vector2(698, 576)
+player = NodePath("../Bee")
 
-[node name="Enemy6" parent="." instance=ExtResource("3_jg6e1")]
+[node name="Enemy6" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_jg6e1")]
 position = Vector2(763, 136)
+player = NodePath("../Bee")
 
-[node name="Enemy7" parent="." instance=ExtResource("3_jg6e1")]
+[node name="Enemy7" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_jg6e1")]
 position = Vector2(401, 96)
+player = NodePath("../Bee")
