@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlvq2jsfqirwy"]
 
 [ext_resource type="PackedScene" uid="uid://f46ldc4pbgag" path="res://Prefabs/bee.tscn" id="1_4vwxn"]
-[ext_resource type="Script" path="res://Camera2D.gd" id="2_rm6tf"]
+[ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="2_rm6tf"]
 [ext_resource type="AudioStream" uid="uid://bkrbpjwh230h0" path="res://Audio/SpellingBee.mp3" id="2_vrvwy"]
 [ext_resource type="PackedScene" uid="uid://ca4851fecb8fq" path="res://Prefabs/enemy.tscn" id="3_jg6e1"]
 
