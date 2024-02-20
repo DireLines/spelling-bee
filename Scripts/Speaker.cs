@@ -37,6 +37,9 @@ public partial class Speaker : Node {
 					sound = ResourceLoader.Load<AudioStreamWav>(wordpath);
 				}
 			} else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) {
+				//TODO: jank as hell
+				//make it detect where ffmpeg is and give up if not exists
+				//make it clean up the ogg and raw files since they crash godot
 				string filepath = wordDir + killphrase;
 				var sayProcess = Process.Start("/usr/bin/say","-v daniel -o " + filepath + ".ogg" + " " + killphrase);
 				while (!sayProcess.HasExited) {

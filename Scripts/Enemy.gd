@@ -15,7 +15,13 @@ func _ready():
 	area_2d.connect("body_entered", Callable(self, "_on_body_entered"))
 	var file : FileAccess = FileAccess.open(commonWords, FileAccess.READ)
 	var words = file.get_as_text().split("\n")
-	set_killphrase(words[randi_range(0,len(words)-1)])
+	var found_good_word = false
+	var word = ""
+	while !found_good_word:
+		word = words[randi_range(0,len(words)-1)]
+		if len(word) < 6:
+			found_good_word = true
+	set_killphrase(word)
 
 func set_killphrase(phrase):
 	killphrase = phrase.to_upper()
