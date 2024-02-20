@@ -20,8 +20,10 @@ texture = ExtResource("1_7jrdi")
 hframes = 3
 
 [node name="Word" type="RichTextLabel" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -45.0
+offset_top = -43.0
+offset_right = 46.0
+offset_bottom = -3.0
 bbcode_enabled = true
 
 [node name="Area2D" type="Area2D" parent="."]

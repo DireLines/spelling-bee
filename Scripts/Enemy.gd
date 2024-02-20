@@ -8,26 +8,14 @@ var hit_letters = []
 func _ready():
 	area_2d.connect("body_entered", Callable(self, "_on_body_entered"))
 	set_killphrase("dog")
-	#area_2d.connect("body_exited", Callable(self, "_on_body_exited"))
 
 func set_killphrase(phrase):
 	killphrase = phrase.to_upper()
 	hit_letters = []
 	for letter in killphrase:
 		hit_letters.append(false)
-	set_text(killphrase, [Color.RED, Color.GREEN, Color.BLUE])
-	
-func set_text(word: String, colors: Array[Color]):
-	assert(word.length() == colors.size(), "word length and colors length must match.")
-	var text = ""
-	for i in range(word.length()):
-		var color = colors[i].to_html()
-		var char = word[i]
-		text += "[color=%s]%s" % [color, char]
-		
-	get_node("Word").text = text
-		
-	
+	refresh_killphrase_display()
+
 func _on_body_entered(body):
 	var label = body.get_node_or_null("Letter")
 	if label != null:
@@ -61,8 +49,30 @@ func hit_letter(index):
 		return # letter already hit
 	hit_letters[index] = true
 	#TODO play bullet sfx and stuff
+	refresh_killphrase_display()
 	for hit in hit_letters:
 		if !hit:
 			return # not all letters hit yet
 	#TODO play death sfx and stuff
 	queue_free()
+
+func refresh_killphrase_display():
+	var unhit_color = Color.WHITE
+	var hit_color = Color.INDIAN_RED
+	var colors = []	
+	for hit in hit_letters:
+		if hit:
+			colors.append(hit_color)
+		else:
+			colors.append(unhit_color)
+	print(colors)
+	set_text(killphrase,colors)
+	
+func set_text(word: String, colors):
+	assert(word.length() == colors.size(), "word length and colors length must match.")
+	var text = "[center]"
+	for i in range(word.length()):
+		var color = colors[i].to_html()
+		var ch = word[i]
+		text += "[color=%s]%s" % [color, ch]
+	get_node("Word").text = text
