@@ -19,8 +19,8 @@ func set_killphrase(phrase):
 	hit_letters = []
 	for letter in killphrase:
 		hit_letters.append(false)
+	audio_player.stream = speaker_class.GetKillphraseAudio(phrase)
 	refresh_killphrase_display()
-	audio_player.stream = speaker_class.GetKillphraseAudio(killphrase)
 
 func _on_body_entered(body):
 	var label = body.get_node_or_null("Letter")
