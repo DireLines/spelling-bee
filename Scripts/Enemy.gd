@@ -65,7 +65,6 @@ func refresh_killphrase_display():
 			colors.append(hit_color)
 		else:
 			colors.append(unhit_color)
-	print(colors)
 	set_text(killphrase,colors)
 	
 func set_text(word: String, colors):
