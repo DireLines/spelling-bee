@@ -9,12 +9,14 @@ var killphrase = ""
 var hit_letters = []
 var sound: AudioStreamWAV
 
-var speed = 40
+var speed = 70
+var show_unhit_letters = false
+var should_speak = true
 @export var player: Node2D = null
 
 func _ready():
 	$Timer.timeout.connect(talk)
-	$Timer.wait_time = randf_range(1,2)
+	$Timer.wait_time = randf_range(0.7,3)
 	area_2d.connect("body_entered", Callable(self, "_on_body_entered"))
 	var file : FileAccess = FileAccess.open(commonWords, FileAccess.READ)
 	var words = file.get_as_text().split("\n")
@@ -22,7 +24,7 @@ func _ready():
 	var word = ""
 	while !found_good_word:
 		word = words[randi_range(0,len(words)-1)]
-		if len(word) < 6:
+		if len(word) > 2 and len(word) < 7:
 			found_good_word = true
 	set_killphrase(word)
 
@@ -43,19 +45,20 @@ func set_killphrase(phrase):
 
 func _on_body_entered(body):
 	var label = body.get_node_or_null("Letter")
-	if label != null:
-		var letter = label.text
-		var letter_index = get_next_hittable_letter_index()
-		if letter_index == -1:
-			print("enemy already dead")
-			return # all letters hit - enemy already dead
-		var needed_letter = killphrase[letter_index]
-		if letter == needed_letter:
-			hit_letter(letter_index)
-			body.queue_free()
-		else:
-			#TODO move body to enemy bullet layer
-			body.linear_velocity *= -0.8
+	if label == null:
+		return
+	var letter = label.text
+	var letter_index = get_next_hittable_letter_index()
+	if letter_index == -1:
+		print("enemy already dead")
+		return # all letters hit - enemy already dead
+	var needed_letter = killphrase[letter_index]
+	if letter == needed_letter:
+		hit_letter(letter_index)
+		body.queue_free()
+	else:
+		#TODO move body to enemy bullet layer
+		body.linear_velocity *= -0.8
 
 func get_next_hittable_letter_index():
 	for i in range(len(killphrase)):
@@ -80,6 +83,8 @@ func hit_letter(index):
 func refresh_killphrase_display():
 	var unhit_color = Color.WHITE
 	var hit_color = Color.INDIAN_RED
+	if !show_unhit_letters:
+		unhit_color = Color.TRANSPARENT
 	var colors = []
 	for hit in hit_letters:
 		if hit:

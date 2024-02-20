@@ -43,7 +43,13 @@ public partial class Speaker : Node {
 					//TODO: jank as hell
 					//make it detect where ffmpeg is and give up if not exists
 					string filepath = wordDir + killphrase;
-					var sayProcess = Process.Start("/usr/bin/say","-v moira -r 150 -o " + filepath + ".ogg" + " " + killphrase);
+					string voice = "moira";
+					var rand = new Random();
+					int coinflip = rand.Next()% 2;
+					if (coinflip == 0) {
+						voice = "daniel";
+					}
+					var sayProcess = Process.Start("/usr/bin/say","-v " + voice + " -r 150 -o " + filepath + ".ogg" + " " + killphrase);
 					sayProcess.WaitForExit();
 
 					var ffmpegProcess = Process.Start("/opt/homebrew/bin/ffmpeg","-i " + filepath + ".ogg -f s16le -acodec pcm_s16le " + filepath + ".raw");
