@@ -1,8 +1,8 @@
 extends RigidBody2D
 
-@export var speed: int = 35
-@export var max_forward_speed: int = 400
-@export var max_reverse_speed: int = 100
+@export var speed: int = 50
+@export var max_forward_speed: int = 200
+@export var max_reverse_speed: int = 125
 @export var dampening: float = 5.0
 
 @onready var sprite_2d = $Sprite2D
