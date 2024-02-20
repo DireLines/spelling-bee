@@ -1,9 +1,12 @@
 extends CharacterBody2D
 
 @onready var area_2d = $Area2D
+# @onready var speaker: Speaker = $Speaker
+@onready var audio_player = $AudioPlayer
 
 var killphrase = ""
 var hit_letters = []
+var sound: AudioStreamWAV
 
 func _ready():
 	$Timer.timeout.connect(talk)
@@ -16,6 +19,7 @@ func set_killphrase(phrase):
 	for letter in killphrase:
 		hit_letters.append(false)
 	refresh_killphrase_display()
+	# audio_player.sound = speaker.GetKillphraseAudio(killphrase)
 
 func _on_body_entered(body):
 	var label = body.get_node_or_null("Letter")
@@ -32,11 +36,11 @@ func _on_body_entered(body):
 		else:
 			#TODO move body to enemy bullet layer
 			body.linear_velocity *= -0.8
-		
+
 #
 #func _on_body_exited(body):
 	#pass
-	
+
 func get_next_hittable_letter_index():
 	for i in range(len(killphrase)):
 		if !hit_letters[i]:
@@ -60,14 +64,14 @@ func hit_letter(index):
 func refresh_killphrase_display():
 	var unhit_color = Color.WHITE
 	var hit_color = Color.INDIAN_RED
-	var colors = []	
+	var colors = []
 	for hit in hit_letters:
 		if hit:
 			colors.append(hit_color)
 		else:
 			colors.append(unhit_color)
 	set_text(killphrase,colors)
-	
+
 func set_text(word: String, colors):
 	assert(word.length() == colors.size(), "word length and colors length must match.")
 	var text = "[center]"
@@ -79,3 +83,4 @@ func set_text(word: String, colors):
 
 func talk():
 	$AnimationPlayer.play("Talk")
+	# audio_player.play()
