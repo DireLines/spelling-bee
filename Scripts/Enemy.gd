@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
+var speaker_class = preload("res://Scripts/Speaker.cs")
+
 @onready var area_2d = $Area2D
-# @onready var speaker: Speaker = $Speaker
 @onready var audio_player = $AudioPlayer
 
 var killphrase = ""
@@ -19,7 +20,7 @@ func set_killphrase(phrase):
 	for letter in killphrase:
 		hit_letters.append(false)
 	refresh_killphrase_display()
-	# audio_player.sound = speaker.GetKillphraseAudio(killphrase)
+	audio_player.stream = speaker_class.GetKillphraseAudio(killphrase)
 
 func _on_body_entered(body):
 	var label = body.get_node_or_null("Letter")
@@ -83,4 +84,4 @@ func set_text(word: String, colors):
 
 func talk():
 	$AnimationPlayer.play("Talk")
-	# audio_player.play()
+	audio_player.play()

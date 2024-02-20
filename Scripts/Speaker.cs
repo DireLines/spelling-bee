@@ -3,7 +3,7 @@ using System.Speech.Synthesis;
 
 public partial class Speaker : Node
 {
-	public AudioStreamWav GetKillphraseAudio(string killphrase) {
+	public static AudioStreamWav GetKillphraseAudio(string killphrase) {
 		string wordpath = ProjectSettings.GlobalizePath("res://Audio/Speech/" + killphrase + ".wav");
 		AudioStreamWav sound = new AudioStreamWav();
 		if (!System.IO.File.Exists(wordpath)) {
