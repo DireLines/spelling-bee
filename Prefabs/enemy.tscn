@@ -83,3 +83,4 @@ autostart = true
 script = ExtResource("1_l6ve8")
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+attenuation = 3.0

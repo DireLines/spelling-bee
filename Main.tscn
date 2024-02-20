@@ -16,25 +16,26 @@ script = ExtResource("2_rm6tf")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_vrvwy")
+volume_db = -4.768
 autoplay = true
 
 [node name="Enemy" parent="." instance=ExtResource("3_jg6e1")]
-position = Vector2(476, 244)
+position = Vector2(328, 465)
 
 [node name="Enemy2" parent="." instance=ExtResource("3_jg6e1")]
-position = Vector2(392, 173)
+position = Vector2(144, 134)
 
 [node name="Enemy3" parent="." instance=ExtResource("3_jg6e1")]
-position = Vector2(652, 205)
+position = Vector2(885, 431)
 
 [node name="Enemy4" parent="." instance=ExtResource("3_jg6e1")]
-position = Vector2(756, 195)
+position = Vector2(1020, 104)
 
 [node name="Enemy5" parent="." instance=ExtResource("3_jg6e1")]
-position = Vector2(671, 79)
+position = Vector2(698, 576)
 
 [node name="Enemy6" parent="." instance=ExtResource("3_jg6e1")]
-position = Vector2(494, 88)
+position = Vector2(763, 136)
 
 [node name="Enemy7" parent="." instance=ExtResource("3_jg6e1")]
 position = Vector2(401, 96)
