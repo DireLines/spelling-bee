@@ -6,6 +6,7 @@ extends RigidBody2D
 @export var dampening: float = 5.0
 
 @onready var sprite_2d = $Sprite2D
+var bullet_prefab = preload("res://Prefabs/bullet.tscn")
 
 func get_input():
 	var velocity = Vector2()
@@ -16,6 +17,7 @@ func get_input():
 	if Input.is_action_pressed("right_click"):
 		velocity = (position - mouse_pos) * speed
 	return velocity
+
 func _physics_process(delta):
 	var velocity = get_input()
 	apply_central_impulse(velocity*delta)
@@ -34,7 +36,7 @@ func _unhandled_input(event):
 			if c >= 'A' and c <= 'Z':
 				load_bullet(c)
 
-var bullet_prefab = preload("res://Prefabs/bullet.tscn")
+
 func load_bullet(letter:String):
 	var bullet = bullet_prefab.instantiate()
 	get_tree().get_root().add_child(bullet)

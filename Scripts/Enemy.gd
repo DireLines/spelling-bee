@@ -1,13 +1,16 @@
 extends CharacterBody2D
 
-var speaker_class = preload("res://Scripts/Speaker.cs")
 @onready var commonWords = "res://Words/common.txt"
 @onready var area_2d = $Area2D
 @onready var audio_player = $AudioPlayer
 
+var speaker_class = preload("res://Scripts/Speaker.cs")
 var killphrase = ""
 var hit_letters = []
 var sound: AudioStreamWAV
+
+@export var speed = 40
+@export var player: Node2D = null
 
 func _ready():
 	$Timer.timeout.connect(talk)
@@ -22,6 +25,13 @@ func _ready():
 		if len(word) < 6:
 			found_good_word = true
 	set_killphrase(word)
+
+func _physics_process(delta):
+	var origin = position
+	var target = player.position
+	var direction = (target - origin).normalized()
+	velocity = direction * speed
+	move_and_slide()
 
 func set_killphrase(phrase):
 	killphrase = phrase.to_upper()
@@ -46,10 +56,6 @@ func _on_body_entered(body):
 		else:
 			#TODO move body to enemy bullet layer
 			body.linear_velocity *= -0.8
-
-#
-#func _on_body_exited(body):
-	#pass
 
 func get_next_hittable_letter_index():
 	for i in range(len(killphrase)):
