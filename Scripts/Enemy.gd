@@ -4,8 +4,9 @@ extends CharacterBody2D
 
 var killphrase = ""
 var hit_letters = []
-	
+
 func _ready():
+	$Timer.timeout.connect(talk)
 	area_2d.connect("body_entered", Callable(self, "_on_body_entered"))
 	set_killphrase("dog")
 
@@ -75,3 +76,6 @@ func set_text(word: String, colors):
 		var ch = word[i]
 		text += "[color=%s]%s" % [color, ch]
 	get_node("Word").text = text
+
+func talk():
+	$AnimationPlayer.play("Talk")
