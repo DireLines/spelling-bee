@@ -20,3 +20,6 @@ autoplay = true
 
 [node name="Enemy" parent="." instance=ExtResource("3_jg6e1")]
 position = Vector2(476, 244)
+
+[node name="Enemy2" parent="." instance=ExtResource("3_jg6e1")]
+position = Vector2(580, 149)

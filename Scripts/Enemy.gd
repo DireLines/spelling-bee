@@ -11,6 +11,7 @@ var sound: AudioStreamWAV
 
 func _ready():
 	$Timer.timeout.connect(talk)
+	$Timer.wait_time = randf_range(1,2)
 	area_2d.connect("body_entered", Callable(self, "_on_body_entered"))
 	set_killphrase("dog")
 
