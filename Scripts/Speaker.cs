@@ -38,6 +38,7 @@ public partial class Speaker : Node
 			}
 		} catch (PlatformNotSupportedException _) {
 			GD.Print("Platform not supported for Speech Synthesis - get a windows computer, loser.");
+			System.Diagnostics.Process.Start("say", killphrase);
 		}
 		return sound;
 	}
