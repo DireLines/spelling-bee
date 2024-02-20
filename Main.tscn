@@ -22,4 +22,19 @@ autoplay = true
 position = Vector2(476, 244)
 
 [node name="Enemy2" parent="." instance=ExtResource("3_jg6e1")]
-position = Vector2(580, 149)
+position = Vector2(392, 173)
+
+[node name="Enemy3" parent="." instance=ExtResource("3_jg6e1")]
+position = Vector2(652, 205)
+
+[node name="Enemy4" parent="." instance=ExtResource("3_jg6e1")]
+position = Vector2(756, 195)
+
+[node name="Enemy5" parent="." instance=ExtResource("3_jg6e1")]
+position = Vector2(671, 79)
+
+[node name="Enemy6" parent="." instance=ExtResource("3_jg6e1")]
+position = Vector2(494, 88)
+
+[node name="Enemy7" parent="." instance=ExtResource("3_jg6e1")]
+position = Vector2(401, 96)

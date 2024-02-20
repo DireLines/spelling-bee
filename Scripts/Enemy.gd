@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var speaker_class = preload("res://Scripts/Speaker.cs")
-
+@onready var commonWords = "res://Words/common.txt"
 @onready var area_2d = $Area2D
 @onready var audio_player = $AudioPlayer
 
@@ -13,7 +13,9 @@ func _ready():
 	$Timer.timeout.connect(talk)
 	$Timer.wait_time = randf_range(1,2)
 	area_2d.connect("body_entered", Callable(self, "_on_body_entered"))
-	set_killphrase("dog")
+	var file : FileAccess = FileAccess.open(commonWords, FileAccess.READ)
+	var words = file.get_as_text().split("\n")
+	set_killphrase(words[randi_range(0,len(words)-1)])
 
 func set_killphrase(phrase):
 	killphrase = phrase.to_upper()
