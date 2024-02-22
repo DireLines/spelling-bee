@@ -12,7 +12,8 @@ var sound: AudioStreamWAV
 var speed = 70
 var show_unhit_letters = false
 var should_speak = true
-@export var player: Node2D = null
+
+@onready var player = $"../Bee"
 
 func _ready():
 	$Timer.timeout.connect(talk)
