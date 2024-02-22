@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://f46ldc4pbgag" path="res://Prefabs/bee.tscn" id="1_4vwxn"]
 [ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="2_rm6tf"]
 [ext_resource type="AudioStream" uid="uid://bkrbpjwh230h0" path="res://Audio/SpellingBee.mp3" id="2_vrvwy"]
-[ext_resource type="PackedScene" uid="uid://ca4851fecb8fq" path="res://Prefabs/enemy.tscn" id="3_jg6e1"]
+[ext_resource type="Script" path="res://Scripts/EnemySpawner.gd" id="4_ino48"]
 
 [node name="Main" type="Node2D"]
 
@@ -16,26 +16,14 @@ script = ExtResource("2_rm6tf")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_vrvwy")
-volume_db = -8.0
+volume_db = -80.0
 autoplay = true
 
-[node name="Enemy" parent="." instance=ExtResource("3_jg6e1")]
-position = Vector2(328, 465)
+[node name="EnemySpawner" type="Node" parent="."]
+script = ExtResource("4_ino48")
 
-[node name="Enemy2" parent="." instance=ExtResource("3_jg6e1")]
-position = Vector2(144, 134)
+[node name="Timer" type="Timer" parent="EnemySpawner"]
+wait_time = 5.0
+autostart = true
 
-[node name="Enemy3" parent="." instance=ExtResource("3_jg6e1")]
-position = Vector2(885, 431)
-
-[node name="Enemy4" parent="." instance=ExtResource("3_jg6e1")]
-position = Vector2(1020, 104)
-
-[node name="Enemy5" parent="." instance=ExtResource("3_jg6e1")]
-position = Vector2(698, 576)
-
-[node name="Enemy6" parent="." instance=ExtResource("3_jg6e1")]
-position = Vector2(763, 136)
-
-[node name="Enemy7" parent="." instance=ExtResource("3_jg6e1")]
-position = Vector2(401, 96)
+[connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]

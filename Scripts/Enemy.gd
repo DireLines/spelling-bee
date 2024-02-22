@@ -13,9 +13,14 @@ var speed = 70
 var show_unhit_letters = false
 var should_speak = true
 
-@onready var player = $"../Bee"
+var player
 
-func _ready():
+func initialize():
+	player = get_tree().get_root().get_node("Main/Bee")
+	var theta = randf() * 2 * PI
+	var offset = (Vector2(cos(theta), sin(theta)) * sqrt(randf())).normalized() * 1000
+	
+	position = player.position + offset
 	$Timer.timeout.connect(talk)
 	$Timer.wait_time = randf_range(0.7,3)
 	area_2d.connect("body_entered", Callable(self, "_on_body_entered"))
@@ -30,6 +35,8 @@ func _ready():
 	set_killphrase(word)
 
 func _physics_process(delta):
+	if !player:
+		return
 	var origin = position
 	var target = player.position
 	var direction = (target - origin).normalized()
