@@ -44,7 +44,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func set_killphrase(phrase):
-	killphrase = phrase.to_upper()
+	killphrase = phrase.to_upper().replace("\n", "").replace("\r", "")
 	hit_letters = []
 	for letter in killphrase:
 		hit_letters.append(false)
