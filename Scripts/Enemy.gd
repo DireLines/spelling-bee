@@ -65,7 +65,10 @@ func _on_body_entered(body):
 		hit_letter(letter_index)
 		body.queue_free()
 	else:
-		#TODO move body to enemy bullet layer
+		#make enemy bullet
+		body.set_collision_layer_value(2,false)
+		body.set_collision_layer_value(4,true)
+		#reflect back at source
 		body.linear_velocity *= -0.8
 
 func get_next_hittable_letter_index():

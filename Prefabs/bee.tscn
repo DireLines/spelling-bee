@@ -47,6 +47,7 @@ _data = {
 height = 46.0
 
 [node name="Bee" type="RigidBody2D"]
+collision_mask = 12
 gravity_scale = 1.66533e-16
 script = ExtResource("1_4yc5n")
 
@@ -62,5 +63,19 @@ texture = ExtResource("1_x5mmi")
 vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -1)
+shape = SubResource("CapsuleShape2D_7htaw")
+
+[node name="Health" type="RichTextLabel" parent="."]
+offset_left = -110.0
+offset_top = -44.0
+offset_right = 109.0
+offset_bottom = -4.0
+bbcode_enabled = true
+text = "[font_size=12][center]❤️❤️❤️"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-2, -1)
 shape = SubResource("CapsuleShape2D_7htaw")
