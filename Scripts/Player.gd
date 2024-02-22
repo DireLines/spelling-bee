@@ -14,6 +14,8 @@ var health = 3
 var max_health = 3
 var dead = false
 
+var score = 0
+
 var bullet_prefab = preload("res://Prefabs/bullet.tscn")
 
 func _ready():
@@ -73,7 +75,7 @@ func refresh_health_display():
 
 func die():
 	#TODO play die sfx and stuff
-	var disptext = "[center]YOU DIED" 
+	var disptext = "[center]I'M SORRY\nTHAT IS INCORRECT\nSCORE: %d" % score
 	health_display.text = disptext
 	sprite_2d.hide()
 	dead = true

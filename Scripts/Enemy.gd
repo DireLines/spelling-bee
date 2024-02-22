@@ -18,7 +18,7 @@ var player
 func initialize():
 	player = get_tree().get_root().get_node("Main/Bee")
 	var theta = randf() * 2 * PI
-	var offset = (Vector2(cos(theta), sin(theta)) * sqrt(randf())).normalized() * 1000
+	var offset = (Vector2(cos(theta), sin(theta)) * sqrt(randf())).normalized() * 500
 	
 	position = player.position + offset
 	$Timer.timeout.connect(talk)
@@ -89,6 +89,10 @@ func hit_letter(index):
 		if !hit:
 			return # not all letters hit yet
 	#TODO play death sfx and stuff
+	die()
+
+func die():
+	player.score += len(killphrase)
 	queue_free()
 
 func refresh_killphrase_display():

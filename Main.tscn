@@ -23,7 +23,7 @@ autoplay = true
 script = ExtResource("4_ino48")
 
 [node name="Timer" type="Timer" parent="EnemySpawner"]
-wait_time = 5.0
+wait_time = 7.0
 autostart = true
 
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]
