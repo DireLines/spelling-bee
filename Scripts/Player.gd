@@ -12,12 +12,14 @@ extends RigidBody2D
 
 var health = 3
 var max_health = 3
+var dead = false
 
 var bullet_prefab = preload("res://Prefabs/bullet.tscn")
 
 func _ready():
 	area_2d.connect("body_entered", Callable(self, "_on_body_entered"))
 	health = max_health
+	refresh_health_display()
 func get_input():
 	var velocity = Vector2()
 	velocity = -linear_velocity * dampening
@@ -29,6 +31,8 @@ func get_input():
 	return velocity
 
 func _physics_process(delta):
+	if dead:
+		return
 	var velocity = get_input()
 	apply_central_impulse(velocity*delta)
 	var max_speed = max_forward_speed
@@ -45,12 +49,14 @@ func _on_body_entered(body):
 		return
 	#TODO play hit sfx and stuff
 	health -= 1
+	refresh_health_display()
 	body.queue_free()
 	if health <= 0:
-		#TODO play die sfx and stuff
-		queue_free()
+		die()
 
 func _unhandled_input(event):
+	if dead:
+		return
 	if event is InputEventKey:
 		if event.pressed:
 			var c = char(event.keycode)
@@ -58,11 +64,20 @@ func _unhandled_input(event):
 				load_bullet(c)
 
 func refresh_health_display():
-	var disptext = "[font_size=12][center]" 
+	var disptext = "[font_size=12][center]"
 	for i in range(health):
-		disptext.append("❤️")
+		disptext+="❤️"
+	for i in range(max_health-health):
+		disptext+="🖤"
 	health_display.text = disptext
 
+func die():
+	#TODO play die sfx and stuff
+	var disptext = "[center]YOU DIED" 
+	health_display.text = disptext
+	sprite_2d.hide()
+	dead = true
+	
 func load_bullet(letter:String):
 	var bullet = bullet_prefab.instantiate()
 	get_tree().get_root().add_child(bullet)

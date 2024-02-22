@@ -7,5 +7,7 @@ func spawnEnemy():
 	add_child(instance)
 	instance.initialize()
 
+func _ready():
+	spawnEnemy()
 func _on_timer_timeout():
 	spawnEnemy()
