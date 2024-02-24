@@ -3,6 +3,7 @@ using System;
 using System.Speech.Synthesis;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
+using System.Collections;
 
 public partial class Speaker : Node {
 	public static AudioStreamWav GetKillphraseAudio(string killphrase) {
@@ -67,5 +68,20 @@ public partial class Speaker : Node {
 			GD.Print("Platform not supported for Speech Synthesis - get a windows computer, loser.");
 		}
 		return sound;
+	}
+	
+	public static void SetKillphraseAudioAsync(AudioStreamPlayer2D audioPlayer, string killphrase){
+		StartCoroutine(SetKillphraseAudio(audioPlayer, killphrase));
+	}
+	
+	static IEnumerable SetKillphraseAudio(AudioStreamPlayer2D audioPlayer, string killphrase){
+			audioPlayer.Stream = GetKillphraseAudio(killphrase);
+			yield return null;
+	}
+	public static async void StartCoroutine(IEnumerable objects) {
+		var mainLoopTree = Engine.GetMainLoop();
+		foreach (var _ in objects) {
+			await mainLoopTree.ToSignal(mainLoopTree, SceneTree.SignalName.ProcessFrame);
+		}
 	}
 }

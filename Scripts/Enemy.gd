@@ -3,8 +3,8 @@ extends CharacterBody2D
 @onready var commonWords = "res://Words/common.txt"
 @onready var area_2d = $Area2D
 @onready var audio_player = $AudioPlayer
+@onready var tts = get_tree().get_root().get_node("Main/TextToSpeechProcess");
 
-var speaker_class = preload("res://Scripts/Speaker.cs")
 var killphrase = ""
 var hit_letters = []
 var sound: AudioStreamWAV
@@ -19,7 +19,6 @@ func initialize():
 	player = get_tree().get_root().get_node("Main/Bee")
 	var theta = randf() * 2 * PI
 	var offset = (Vector2(cos(theta), sin(theta)) * sqrt(randf())).normalized() * 500
-	
 	position = player.position + offset
 	$Timer.timeout.connect(talk)
 	$Timer.wait_time = randf_range(0.7,3)
@@ -48,7 +47,7 @@ func set_killphrase(phrase):
 	hit_letters = []
 	for letter in killphrase:
 		hit_letters.append(false)
-	audio_player.stream = speaker_class.GetKillphraseAudio(phrase)
+	await tts.set_killphrase_audio(audio_player,phrase)
 	refresh_killphrase_display()
 
 func _on_body_entered(body):

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlvq2jsfqirwy"]
+[gd_scene load_steps=6 format=3 uid="uid://dlvq2jsfqirwy"]
 
 [ext_resource type="PackedScene" uid="uid://f46ldc4pbgag" path="res://Prefabs/bee.tscn" id="1_4vwxn"]
 [ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="2_rm6tf"]
 [ext_resource type="AudioStream" uid="uid://bkrbpjwh230h0" path="res://Audio/SpellingBee.mp3" id="2_vrvwy"]
 [ext_resource type="Script" path="res://Scripts/EnemySpawner.gd" id="4_ino48"]
+[ext_resource type="Script" path="res://TextToSpeechProcess.gd" id="5_x1iy6"]
 
 [node name="Main" type="Node2D"]
 
@@ -16,7 +17,7 @@ script = ExtResource("2_rm6tf")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_vrvwy")
-volume_db = -80.0
+volume_db = -22.647
 autoplay = true
 
 [node name="EnemySpawner" type="Node" parent="."]
@@ -25,5 +26,8 @@ script = ExtResource("4_ino48")
 [node name="Timer" type="Timer" parent="EnemySpawner"]
 wait_time = 7.0
 autostart = true
+
+[node name="TextToSpeechProcess" type="Node2D" parent="."]
+script = ExtResource("5_x1iy6")
 
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]
