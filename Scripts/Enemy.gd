@@ -117,5 +117,6 @@ func set_text(word: String, colors):
 	get_node("Word").text = text
 
 func talk():
-	$AnimationPlayer.play("Talk")
-	audio_player.play()
+	if should_speak:
+		$AnimationPlayer.play("Talk")
+		audio_player.play()

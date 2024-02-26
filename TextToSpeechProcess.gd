@@ -20,6 +20,9 @@ func _init():
 	thread.start(_thread_function)
 
 
+func set_tts(audio):
+	audio_player.stream = audio
+
 func _thread_function():
 	while true:
 		semaphore.wait() # Wait until posted.
@@ -32,8 +35,8 @@ func _thread_function():
 			break
 
 		mutex.lock()
-		audio_player.stream = speaker_class.GetKillphraseAudio(killphrase)
-		#counter += 1 # Increment counter, protect with Mutex.
+		var audio = speaker_class.GetKillphraseAudio(killphrase) #generating is slow but does not interact with main scene tree
+		call_deferred("set_tts", audio) #setting the audio needs to be call_deferred so that it interacts in a thread safe way with main loop
 		mutex.unlock()
 
 
