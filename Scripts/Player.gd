@@ -92,7 +92,7 @@ func die():
 	
 func load_bullet(letter:String):
 	var bullet = bullet_prefab.instantiate()
-	get_tree().get_root().add_child(bullet)
+	get_tree().get_root().get_node("Main").add_child(bullet)
 	bullet.position = position
 	var mouse_pos = get_global_mouse_position()	
 	bullet.linear_velocity = (mouse_pos - position).normalized() * 450
