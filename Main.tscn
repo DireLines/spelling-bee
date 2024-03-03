@@ -24,7 +24,7 @@ autoplay = true
 script = ExtResource("4_ino48")
 
 [node name="Timer" type="Timer" parent="EnemySpawner"]
-wait_time = 6.0
+wait_time = 5.0
 autostart = true
 
 [node name="TextToSpeechProcess" type="Node2D" parent="."]

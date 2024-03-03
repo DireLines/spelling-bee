@@ -47,7 +47,6 @@ _data = {
 height = 46.0
 
 [node name="Bee" type="RigidBody2D"]
-collision_layer = 0
 collision_mask = 0
 gravity_scale = 1.66533e-16
 script = ExtResource("1_4yc5n")

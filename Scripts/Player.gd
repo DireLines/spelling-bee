@@ -10,8 +10,8 @@ extends RigidBody2D
 @onready var health_display = $Health
 
 
-var health = 3
 var max_health = 3
+var health = max_health
 var dead = false
 
 var score = 0
@@ -45,16 +45,26 @@ func _physics_process(delta):
 	var mouse_pos = get_global_mouse_position()
 	sprite_2d.flip_h = mouse_pos.x < position.x
 
-func _on_body_entered(body):
-	var label = body.get_node_or_null("Letter")
-	if label == null:
-		return
+func hurt():
 	#TODO play hit sfx and stuff
 	health -= 1
 	refresh_health_display()
-	body.queue_free()
 	if health <= 0:
 		die()
+
+func _on_body_entered(body):
+	if body.name == "Enemy":
+		hurt()
+		var hit_direction = (position - body.position).normalized()
+		var knockback_force = 200
+		apply_central_impulse(hit_direction*knockback_force)
+		return
+	var label = body.get_node_or_null("Letter")
+	if label == null:
+		return
+	hurt()
+	body.queue_free()
+
 
 func _unhandled_input(event):
 	if dead:
